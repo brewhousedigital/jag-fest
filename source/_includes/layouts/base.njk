@@ -13,23 +13,43 @@
 </head>
 <body>
 
-<header class="container">
-	<div class="row justify-content-between py-3 mb-5">
-		<h1 class="home"><a href="{{ '/' | url }}">{{ metadata.title }}</a></h1>
+<div class="container-fluid">
+	<header class="row justify-content-between py-3 pl-3">
+		<h1 class="col-auto position-relative">
+			<img src="/images/logo-rough.png" alt="JAG logo" class="img-fluid">
+			<a href="/" class="text-decoration-none stretched-link fw-bolder">JAG</a>
+		</h1>
 
-		<div>
-			<a href="/posts/" class="btn btn-primary">Posts</a>
-			<a href="/about/" class="btn btn-primary">About</a>
+		<div class="col-auto">
+
 		</div>
-	</div><!-- end row -->
-</header><!-- end container -->
+	</header><!-- end container -->
 
-<main>
-	{{ content | safe }}
-</main>
 
-<footer></footer>
 
+	<main class="row">
+		<div class="sidebar col pl-0">
+			<nav class="">
+				{% for link in nav %}
+				<a href="{{ link.href }}"
+				   class="d-flex align-items-center py-3 {% if link.active == navActive %}active{% endif %}">
+					{% icon link.icon %}
+					<span class="d-inline-block ml-3">{{ link.name }}</span>
+				</a>
+				{% endfor %}
+			</nav>
+		</div><!-- end sidebar nav -->
+
+		<div class="col p-0">
+			<div class="p-3">
+			{{ content | safe }}
+			</div>
+		</div>
+	</main><!-- end row -->
+
+
+	<footer></footer>
+</div><!-- end container -->
 
 
 {% include "source/_includes/components/footer-js-tags.njk" %}

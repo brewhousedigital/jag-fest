@@ -1,0 +1,51 @@
+body {
+	background-color: #121421;
+	color: #fff;
+	font-size: 18px;
+}
+
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+	font-family: 'Permanent Marker', cursive;
+}
+
+header, .sidebar {
+	background-color: #090d16;
+}
+
+header h1 a {
+	color: #ffffff;
+}
+
+header h1 .img-fluid {
+	max-width: 50px;
+}
+
+.sidebar {
+	max-width: 350px!important;
+}
+
+.sidebar a {
+	text-decoration: none;
+	color: #eeeeee;
+	margin-right: 20px;
+	padding-left: 40px;
+	font-weight: 600;
+}
+
+.sidebar a:hover,
+.sidebar a:focus,
+.sidebar a.active {
+	background-color: #0862ea;
+	border-top-right-radius: 50px;
+	border-bottom-right-radius: 50px;
+}
+
+main {
+	min-height: 100vh;
+}
+
+.post-layout-container{
+	max-width: 800px;
+
+}

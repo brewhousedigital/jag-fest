@@ -95,11 +95,24 @@ module.exports = function(eleventyConfig) {
 
 
 
+	eleventyConfig.addShortcode("icon", function(name) {
+		/* {% icon house %} */
+		let iconName = "source/_includes/bootstrap-icons/" + name + ".svg";
+		return fs.readFileSync(iconName).toString();
+	})
 
 
 
-	eleventyConfig.addPassthroughCopy("images");
-	eleventyConfig.addPassthroughCopy("manifest.json");
+
+	eleventyConfig.addPassthroughCopy({"source/images": "images"});
+	eleventyConfig.addPassthroughCopy({"source/manifest.json": "manifest.json"});
+	eleventyConfig.addPassthroughCopy({"source/_includes/partial-css/bootstrap.css": "/css/bootstrap.css"});
+	eleventyConfig.addPassthroughCopy({"source/_includes/partial-js/bootstrap.js": "/js/bootstrap.js"});
+
+
+
+
+
 
 
 

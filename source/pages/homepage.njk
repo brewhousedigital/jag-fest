@@ -2,15 +2,52 @@
 layout: layouts/base.njk
 title: "Home"
 permalink: /
+navActive: "home"
 ---
 
+<a href="/events/jag-fest/2021/" class="d-block mb-5">
+	<img src="/images/posts/jag-fest-2021-annoucement.jpg"
+		 alt="JAG Fest 2021 Announcement"
+		 class="img-fluid rounded shadow">
+</a>
 
-<div class="container">
-	<h1>Latest 3 Posts</h1>
+<div class="row">
+	<div class="col-lg-3">
+		<a href="/events/smash-or-pass/">
+		<img src="/images/posts/jag-fest-2021-smash-or-pass-1.jpg"
+			 alt="Smash or Pass event"
+			 class="img-fluid rounded shadow">
+		</a>
+	</div><!-- end col -->
 
-	{% set postslist = collections.posts | head(-3) %}
+	<div class="col-lg-3">
+		<a href="/events/friday-night-impulse/">
+		<img src="/images/posts/website-post-friday-night-impulse.jpg"
+			 alt="Friday night Impulse Event"
+			 class="img-fluid rounded shadow">
+		</a>
+	</div><!-- end col -->
+
+	<div class="col-lg-6">
+		<a href="/game-reviews/">
+		<img src="/images/posts/website-post-game-reviews.jpg"
+			 alt="Game Reviews graphic"
+			 class="img-fluid rounded shadow">
+		</a>
+	</div><!-- end col -->
+
+
+</div><!-- end row -->
+
+{#<h1>Latest 3 Posts</h1>
+
+{% set postslist = collections.posts | head(-3) %}
 	{% set postslistCounter = collections.posts | length %}
 	{% include "postslist.njk" %}
 
-	<p>More posts can be found in <a href="{{ '/posts/' | url }}">the archive</a>.</p>
-</div><!-- end container -->
+
+	{% for item in metadata.lol %}
+		<p>lol</p>
+	{% endfor %}
+
+<p>More posts can be found in <a href="{{ '/posts/' | url }}">the archive</a>.</p>#}

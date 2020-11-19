@@ -1,0 +1,11 @@
+[
+	{"name": "Home", "icon": "house", "href": "/", "active": "home"},
+	{"name": "Ranking", "icon": "controller", "href": "/ranking/", "active": "ranking"},
+	{"name": "Videos", "icon": "camera-video", "href": "/videos/", "active": "videos"},
+	{"name": "Game Reviews", "icon": "box-seam", "href": "/game-reviews/", "active": "gamereviews"},
+	{"name": "Events", "icon": "calendar4-event", "href": "/events/", "active": "events"},
+	{"name": "Art", "icon": "brush", "href": "/art/", "active": "art"},
+	{"name": "Merch", "icon": "bag", "href": "/merch/", "active": "merch"},
+	{"name": "Posts", "icon": "pen", "href": "/posts/", "active": "posts"},
+	{"name": "About", "icon": "person-square", "href": "/about/", "active": "about"}
+]
