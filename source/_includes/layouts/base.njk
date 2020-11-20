@@ -14,35 +14,26 @@
 <body>
 
 <div class="container-fluid">
-	<header class="row justify-content-between py-3 pl-3">
+	<header class="row align-items-center py-3 pl-3">
+		<div class="col-auto px-0 d-lg-none d-block">
+			<button class="btn" data-toggle="modal" data-target="#nav-modal">{% icon "list" %}</button>
+		</div>
+
 		<h1 class="col-auto position-relative">
 			<img src="/images/logo-rough.png" alt="JAG logo" class="img-fluid">
 			<a href="/" class="text-decoration-none stretched-link fw-bolder">JAG</a>
 		</h1>
-
-		<div class="col-auto">
-
-		</div>
 	</header><!-- end container -->
 
 
-
 	<main class="row">
-		<div class="sidebar col pl-0">
-			<nav class="">
-				{% for link in nav %}
-				<a href="{{ link.href }}"
-				   class="d-flex align-items-center py-3 {% if link.active == navActive %}active{% endif %}">
-					{% icon link.icon %}
-					<span class="d-inline-block ml-3">{{ link.name }}</span>
-				</a>
-				{% endfor %}
-			</nav>
+		<div class="sidebar col pl-0 d-lg-block d-none">
+			{% include "source/_includes/components/head-nav.njk" %}
 		</div><!-- end sidebar nav -->
 
 		<div class="col p-0">
 			<div class="p-3">
-			{{ content | safe }}
+				{{ content | safe }}
 			</div>
 		</div>
 	</main><!-- end row -->
@@ -50,6 +41,21 @@
 
 	<footer></footer>
 </div><!-- end container -->
+
+
+
+<div class="modal fade" id="nav-modal" tabindex="-1" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content border-0">
+			<div class="sidebar">
+				{% include "source/_includes/components/head-nav.njk" %}
+			</div>
+		</div><!-- content -->
+	</div><!-- end dialog -->
+</div><!-- end modal -->
+
+
+
 
 
 {% include "source/_includes/components/footer-js-tags.njk" %}

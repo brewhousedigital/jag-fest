@@ -41,11 +41,43 @@ header h1 .img-fluid {
 	border-bottom-right-radius: 50px;
 }
 
+#nav-modal .modal-content,
+#nav-modal .modal-dialog {
+	max-width: 300px;
+	margin: 0;
+	background-color: #090d16;
+	height: 100vh;
+}
+
+#nav-modal.show  {
+	margin-top: 92px;
+}
+
 main {
 	min-height: 100vh;
 }
 
 .post-layout-container{
 	max-width: 800px;
+
+}
+
+
+header button.btn {
+	color: #fff;
+	font-size: 30px;
+}
+
+header button.btn:hover,
+header button.btn:focus {
+	color: #0a53be;
+}
+
+header button.btn svg {
+	vertical-align: baseline;
+}
+
+
+@media screen and (min-width: 992px) {
 
 }
