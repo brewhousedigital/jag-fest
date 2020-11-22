@@ -103,116 +103,47 @@ module.exports = function(eleventyConfig) {
 
 
 
-
-	eleventyConfig.addPassthroughCopy({"source/images": "images"});
-	eleventyConfig.addPassthroughCopy({"source/manifest.json": "manifest.json"});
+	eleventyConfig.addPassthroughCopy({"source/images": "/images"});
+	eleventyConfig.addPassthroughCopy({"source/manifest.json": "/manifest.json"});
 	eleventyConfig.addPassthroughCopy({"source/_includes/partial-css/bootstrap.css": "/css/bootstrap.css"});
 	eleventyConfig.addPassthroughCopy({"source/_includes/partial-js/bootstrap.js": "/js/bootstrap.js"});
+
+	eleventyConfig.addPassthroughCopy({"source/_includes/partial-js/deploy-js-folder": "/js"});
 
 	// APIs
 	//eleventyConfig.addPassthroughCopy({"source/_data/ranking.json": "/js/ranking.json"});
 
-	try {
-		let rankingFile = fs.readFileSync("source/_data/ranking.json");
-		let rankingJSON = JSON.parse(rankingFile);
 
-		let gamesFile = fs.readFileSync("source/_data/games.json");
-		let gamesJSON = JSON.parse(gamesFile);
-
-		rankingJSON.forEach(function(rank) {
-			let totalWins = 0;
-			let totalLosses = 0;
-
-			rank["games"].forEach(function(item) {
-				totalWins += item.win;
-				totalLosses += item.loss;
-				item["name"] = gamesJSON[item.id].name;
-			});
-
-			let sortedGames = rank["games"].sort(function(a, b) {
-				let textA = a['name'];
-				let textB = b['name'];
-
-				//return (textA < textB) ? 1 : (textA > textB) ? -1 : 0; // for descending
-				return (textA < textB) ? -1 : (textA > textB) ? 1 : 0; //for ascending.
-			});
-
-			rank["wins"] = totalWins;
-			rank["losses"] = totalLosses;
-			rank["record"] = rank.wins - rank.losses;
-			rank["games"] = sortedGames;
-		})
-
-		let sortedRanks = rankingJSON.sort(function(a, b) {
-			let textA = a['record'];
-			let textB = b['record'];
-
-			return (textA < textB) ? 1 : (textA > textB) ? -1 : 0;
-			//return (textA < textB) ? -1 : (textA > textB) ? 1 : 0; //for ascending.
-		});
-
-		sortedRanks = JSON.stringify(sortedRanks);
-
-		fs.writeFile(
-			"_site/js/ranking.json",
-			sortedRanks,
-			function(error) {
-				if (error) {
-					console.log(error);
-				}
-			});
-
-		fs.writeFile(
-			"source/_data/compiled/ranking.json",
-			sortedRanks,
-			function(error) {
-				if (error) {
-					console.log(error);
-				}
-			});
-
-	} catch(e) {
-		console.log(e);
-	}
-
-
-	try {
-		let gamesFile = fs.readFileSync("source/_data/games.json");
-		let gamesJSON = JSON.parse(gamesFile);
-
-
-		for(const game in gamesJSON) {
-			let id = gamesJSON[game].id;
-			let name = gamesJSON[game].name;
-			let url = gamesJSON[game].url;
-			let desc = gamesJSON[game].description;
-
+	setTimeout(function() {
+		try {
 			let rankingFile = fs.readFileSync("source/_data/ranking.json");
 			let rankingJSON = JSON.parse(rankingFile);
+
+			let gamesFile = fs.readFileSync("source/_data/games.json");
+			let gamesJSON = JSON.parse(gamesFile);
 
 			rankingJSON.forEach(function(rank) {
 				let totalWins = 0;
 				let totalLosses = 0;
 
 				rank["games"].forEach(function(item) {
-					if(item.id === id) {
-						totalWins += item.win;
-						totalLosses += item.loss;
-					}
+					totalWins += item.win;
+					totalLosses += item.loss;
+					//item["name"] = gamesJSON[item.id].name;
 				});
 
-				rank["games"] = [];
+				let sortedGames = rank["games"].sort(function(a, b) {
+					let textA = a['name'];
+					let textB = b['name'];
+
+					//return (textA < textB) ? 1 : (textA > textB) ? -1 : 0; // for descending
+					return (textA < textB) ? -1 : (textA > textB) ? 1 : 0; //for ascending.
+				});
+
 				rank["wins"] = totalWins;
 				rank["losses"] = totalLosses;
 				rank["record"] = rank.wins - rank.losses;
-			});
-
-			rankingJSON = rankingJSON.filter(function(rank) {
-				if(rank["wins"] === 0 && rank["losses"] === 0) {
-					// skip over this person
-				} else {
-					return rank;
-				}
+				rank["games"] = sortedGames;
 			})
 
 			let sortedRanks = rankingJSON.sort(function(a, b) {
@@ -223,32 +154,107 @@ module.exports = function(eleventyConfig) {
 				//return (textA < textB) ? -1 : (textA > textB) ? 1 : 0; //for ascending.
 			});
 
+			console.log(sortedRanks);
 			sortedRanks = JSON.stringify(sortedRanks);
 
 			fs.writeFile(
-				"_site/js/ranking/" + url + ".json",
+				"source/_data/compiled/ranking.json",
 				sortedRanks,
 				function(error) {
 					if (error) {
 						console.log(error);
+					} else {
+						console.log("1 success??");
 					}
 				});
 
 			fs.writeFile(
-				"source/_data/compiled/ranking/" + url + ".json",
+				"_site/js/ranking.json",
 				sortedRanks,
 				function(error) {
 					if (error) {
-						console.log(error);
+						console.log("file error", error);
+					} else {
+						console.log("1 success??");
 					}
 				});
+
+		} catch(e) {
+			console.log("yeet1", e);
 		}
 
-	} catch(e) {
-		console.log(e);
-	}
+		try {
+			let gamesFile = fs.readFileSync("source/_data/games.json");
+			let gamesJSON = JSON.parse(gamesFile);
 
 
+			for(const game in gamesJSON) {
+				let id = gamesJSON[game].id;
+				let name = gamesJSON[game].name;
+				let url = gamesJSON[game].url;
+				let desc = gamesJSON[game].description;
+
+				let rankingFile = fs.readFileSync("source/_data/ranking.json");
+				let rankingJSON = JSON.parse(rankingFile);
+
+				rankingJSON.forEach(function(rank) {
+					let totalWins = 0;
+					let totalLosses = 0;
+
+					rank["games"].forEach(function(item) {
+						if(item.id === id) {
+							totalWins += item.win;
+							totalLosses += item.loss;
+						}
+					});
+
+					rank["games"] = [];
+					rank["wins"] = totalWins;
+					rank["losses"] = totalLosses;
+					rank["record"] = rank.wins - rank.losses;
+				});
+
+				rankingJSON = rankingJSON.filter(function(rank) {
+					if(rank["wins"] === 0 && rank["losses"] === 0) {
+						// skip over this person
+					} else {
+						return rank;
+					}
+				})
+
+				let sortedRanks = rankingJSON.sort(function(a, b) {
+					let textA = a['record'];
+					let textB = b['record'];
+
+					return (textA < textB) ? 1 : (textA > textB) ? -1 : 0;
+					//return (textA < textB) ? -1 : (textA > textB) ? 1 : 0; //for ascending.
+				});
+
+				sortedRanks = JSON.stringify(sortedRanks);
+
+				fs.writeFile(
+					"_site/js/ranking/" + url + ".json",
+					sortedRanks,
+					function(error) {
+						if (error) {
+							console.log(error);
+						}
+					});
+
+				fs.writeFile(
+					"source/_data/compiled/ranking/" + url + ".json",
+					sortedRanks,
+					function(error) {
+						if (error) {
+							console.log(error);
+						}
+					});
+			}
+
+		} catch(e) {
+			console.log("yeet2", e);
+		}
+	}, 2000)
 
 
 
