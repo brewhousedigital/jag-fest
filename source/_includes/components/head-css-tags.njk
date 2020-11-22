@@ -4,6 +4,7 @@
 <style>
 	{% set css %}
 	{% include "source/_includes/partial-css/styles.css" %}
+	{% if navActive == "ranking" %}{% include "source/_includes/partial-css/ranking.css" %}{% endif %}
 	{% include "source/_includes/partial-css/media-max-1200.css" %}
 	{% include "source/_includes/partial-css/media-max-768.css" %}
 	{% endset %}

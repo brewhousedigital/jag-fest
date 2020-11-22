@@ -5,5 +5,47 @@ permalink: /ranking/
 navActive: "ranking"
 ---
 
-<h1 class="display-1 mb-5">Ranking</h1>
+<div class="row justify-content-between align-items-center">
+	<h1 class="col-auto display-1 mb-5">Ranking</h1>
+	<div class="col-auto"><a href="/ranking/compare/" class="btn btn-primary btn-lg">Compare</a></div>
+</div><!-- end row -->
+
+
+{# Colors #}
+{# yellow, orange, pink, red, purple, teal, blue, blue-dark, green, green-dark, silver, gold #}
+
+<div class="row ranking-container">
+	{% for player in ranking %}
+		<div class="col-xxl-3 col-xl-4 col-lg-6 col-12">
+			<button class="btn d-block w-100"
+					type="button"
+					data-toggle="collapse"
+					data-target="#ranking-{{ player.name|slugURL }}"
+					aria-expanded="true" aria-controls="ranking-{{ player.name|slugURL }}">
+
+				<div class="ranking-badge ranking-{{ player.color }}">
+					<div class="circle"
+						 style="background-image: url('/images/avatars/{{ player.avatar }}')"></div>
+					<div class="ribbon">{{ player.name }}</div>
+				</div><!-- end rank badge -->
+			</button>
+
+			<div class="collapse show" id="ranking-{{ player.name|slugURL }}">
+				<div class="">
+					<ul class="list-group">
+						{% for game in player.games %}
+							<li class="list-group-item d-flex justify-content-between align-items-center bg-dark">
+								<div>{{ game.name }}</div>
+								<div>
+								<span class="badge bg-success rounded-pill">{{ game.wins }}</span>
+								<span class="badge bg-danger rounded-pill">{{ game.loses }}</span>
+								</div>
+							</li>
+						{% endfor %}
+					</ul>
+				</div><!-- end containing div -->
+			</div><!-- end collapse -->
+		</div><!-- end col -->
+	{% endfor %}
+</div><!-- end ranking wrapper -->
 

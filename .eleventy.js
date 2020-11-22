@@ -109,6 +109,9 @@ module.exports = function(eleventyConfig) {
 	eleventyConfig.addPassthroughCopy({"source/_includes/partial-css/bootstrap.css": "/css/bootstrap.css"});
 	eleventyConfig.addPassthroughCopy({"source/_includes/partial-js/bootstrap.js": "/js/bootstrap.js"});
 
+	// APIs
+	eleventyConfig.addPassthroughCopy({"source/_data/ranking.json": "/js/ranking.json"});
+
 
 
 
