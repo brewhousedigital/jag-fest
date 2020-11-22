@@ -1,0 +1,40 @@
+---
+pagination:
+  data: games
+  size: 1
+  alias: game
+  resolve: values
+layout: layouts/base.njk
+title: Rank By Game
+permalink: /ranking/{{ game.url }}/
+navActive: "ranking"
+currentGame: {{ game.id }}
+---
+
+{% set currentGame = game.id %}
+
+<h2>Ranking</h2>
+<h1 class="col-auto display-1 mb-5">{{ game.name }}</h1>
+
+<div class="row ranking-container text-center">
+	{% for player in compiled.ranking[game.url] %}
+		<div class="col-xxl-3 col-xl-4 col-lg-6 col-12">
+			<div class="ranking-badge ranking-{{ player.color }}">
+				<div class="circle"
+					 style="background-image: url('/images/avatars/{{ player.avatar }}')"></div>
+				<div class="ribbon">{{ player.name }}</div>
+			</div><!-- end rank badge -->
+			{% if player.record > -1 %}
+				<div class="badge bg-primary">Rank {{ loop.index }} | Score {{ player.record }}</div>
+			{% else %}
+				<div class="badge bg-danger">Rank {{ loop.index }} | Score {{ player.record }}</div>
+			{% endif %}
+
+			<div class="ranking-badge-lg">
+				<span class="badge bg-success">+{{ player.wins }}</span>
+				<span class="badge bg-danger">-{{ player.losses }}</span>
+			</div>
+		</div><!-- end col -->
+	{% endfor %}
+</div><!-- end ranking wrapper -->
+

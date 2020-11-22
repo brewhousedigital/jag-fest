@@ -14,6 +14,8 @@ if(document.getElementById("ranking-choice-1") !== null) {
 				.then(function(data) {
 					let players = data;
 
+					console.log(players);
+
 					players.forEach(function(player) {
 						if(player.id === parseInt(person)) {
 							console.log(player);
@@ -34,10 +36,10 @@ if(document.getElementById("ranking-choice-1") !== null) {
 							gameList.forEach(function(game) {
 								let html = `
 								<li class="list-group-item d-flex justify-content-between align-items-center bg-dark">
-									<div>${game.name}</div>
+									<div>${gamesJSON[game.id].name}</div>
 									<div>
-										<span class="badge bg-success rounded-pill">${game.wins}</span>
-										<span class="badge bg-danger rounded-pill">${game.loses}</span>
+										<span class="badge bg-success rounded-pill">${game.win}</span>
+										<span class="badge bg-danger rounded-pill">${game.loss}</span>
 									</div>
 								</li>
 								`;

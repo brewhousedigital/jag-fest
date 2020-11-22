@@ -1,6 +1,13 @@
 <script src="/js/bootstrap.js"></script>
 
 <script>
+	{% set gamesJSON %}
+	let gamesJSON = {% include "source/_data/games.json" %}
+	{% endset %}
+	{{ gamesJSON | safe }}
+</script>
+
+<script>
 	{% set js %}
 	{% include "source/_includes/partial-js/scripts.js" %}
 	{% endset %}

@@ -1,18 +1,26 @@
 [
 	{
-		"id":1, "name": "Zach V", "color": "green", "avatar":"zach-v-avatar.jpg", "games": [
-		{"name": "Super Smash", "wins": 5, "loses": 2},
-		{"name": "Rocket League", "wins": 2, "loses": 3},
-		{"name": "Injustice", "wins": 1, "loses": 5},
-		{"name": "Chess", "wins": 1, "loses": 0}
+		"id": 1, "name":"Zach V", "color":"green", "avatar":"zach-v-avatar.jpg",
+		"games":[
+			{"id": "1", "win": 6, "loss": 2},
+			{"id": "2", "win": 95, "loss": 3},
+			{"id": "3", "win": 1, "loss": 5},
+			{"id": "4", "win": 1, "loss": 0}
 		]
 	},
 	{
-		"id":2, "name": "Sydney V", "color": "silver", "avatar":"sydney-v-avatar.jpg", "games": [
-		{"name": "Super Smash", "wins": 15, "loses": 2},
-		{"name": "Rocket League", "wins": 12, "loses": 3},
-		{"name": "Injustice", "wins": 351, "loses": 5},
-		{"name": "Chess", "wins": 21, "loses": 0}
-	]
+		"id": 2, "name":"Sydney V", "color":"gold", "avatar":"sydney-v-avatar.jpg",
+		"games":[
+			{"id":"1", "win": 15, "loss": 2},
+			{"id":"2", "win": 1,  "loss": 85},
+			{"id":"3", "win": 51, "loss": 5},
+			{"id":"4", "win": 21, "loss": 0}
+		]
+	},
+	{
+		"id": 3, "name":"Yuri V", "color":"pink", "avatar":"sydney-v-avatar.jpg",
+		"games":[
+			{"id":"4", "win": 21, "loss": 0}
+		]
 	}
 ]

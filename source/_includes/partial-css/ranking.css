@@ -1,14 +1,30 @@
 .ranking-container .list-group-item {
+	background-color: #212529;
+	color: #fff;
+}
 
+.ranking-badge-lg .badge {
+	min-width: 58px;
+}
+
+.ranking-container .list-group-item:hover,
+.ranking-container .list-group-item:focus {
+	background-color: #111;
+}
+
+.ranking-container .list-group-item .badge {
+	min-width: 36px;
+	padding: .35em 0;
+	font-family: var(--bs-font-monospace);
 }
 
 .ranking-badge {
 	position: relative;
-	margin: 1.5em 3em;
+	margin: 0 auto 8px auto;
 	width: 4em;
 	height: 6.2em;
 	border-radius: 10px;
-	display: inline-block;
+	display: block;
 	top: 0;
 	transition: all 0.2s ease;
 }
