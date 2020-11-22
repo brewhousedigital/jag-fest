@@ -129,7 +129,7 @@ module.exports = function(eleventyConfig) {
 				rank["games"].forEach(function(item) {
 					totalWins += item.win;
 					totalLosses += item.loss;
-					//item["name"] = gamesJSON[item.id].name;
+					item["name"] = gamesJSON[item.id].name;
 				});
 
 				let sortedGames = rank["games"].sort(function(a, b) {
@@ -137,7 +137,7 @@ module.exports = function(eleventyConfig) {
 					let textB = b['name'];
 
 					//return (textA < textB) ? 1 : (textA > textB) ? -1 : 0; // for descending
-					return (textA < textB) ? -1 : (textA > textB) ? 1 : 0; //for ascending.
+					return (textA < textB) ? -1 : (textA > textB) ? 1 : 0; // for ascending.
 				});
 
 				rank["wins"] = totalWins;
