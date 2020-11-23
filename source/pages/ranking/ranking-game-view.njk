@@ -13,12 +13,12 @@ currentGame: {{ game.id }}
 
 {% set currentGame = game.id %}
 
-<h2>Ranking</h2>
+<h2><a href="/ranking/" class="text-white text-decoration-none">{% icon "arrow-left-circle" %} Ranking</a></h2>
 <h1 class="col-auto display-1 mb-5">{{ game.name }}</h1>
 
 <div class="row ranking-container text-center">
 	{% for player in compiled.ranking[game.url] %}
-		<div class="col-xxl-3 col-xl-4 col-lg-6 col-12">
+		<div class="col-xxl-2 col-xl-4 col-6 mb-5">
 			<div class="ranking-badge ranking-{{ player.color }}">
 				<div class="circle"
 					 style="background-image: url('/images/avatars/{{ player.avatar }}')"></div>
