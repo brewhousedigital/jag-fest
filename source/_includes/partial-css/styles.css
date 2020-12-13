@@ -65,7 +65,7 @@ main {
 
 header button.btn {
 	color: #fff;
-	font-size: 30px;
+	/*font-size: 30px;*/
 }
 
 header button.btn:hover,
@@ -75,6 +75,8 @@ header button.btn:focus {
 
 header button.btn svg {
 	vertical-align: baseline;
+	height: 30px;
+	width: 30px;
 }
 
 

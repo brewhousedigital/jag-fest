@@ -97,7 +97,7 @@ module.exports = function(eleventyConfig) {
 
 	eleventyConfig.addShortcode("icon", function(name) {
 		/* {% icon house %} */
-		let iconName = "source/_includes/bootstrap-icons/" + name + ".svg";
+		let iconName = "node_modules/bootstrap-icons/icons/" + name + ".svg";
 		return fs.readFileSync(iconName).toString();
 	})
 
@@ -159,7 +159,7 @@ module.exports = function(eleventyConfig) {
 		//console.log(sortedRanks);
 		sortedRanks = JSON.stringify(sortedRanks);
 
-		fs.writeFile("source/_data/compiled/ranking.json", sortedRanks, function (err) {
+		fs.writeFileSync("source/_data/compiled/ranking.json", sortedRanks, function (err) {
 			if (err) throw err;
 			console.log('Saved! 1');
 		});
@@ -219,7 +219,7 @@ module.exports = function(eleventyConfig) {
 
 			sortedRanks = JSON.stringify(sortedRanks);
 
-			fs.writeFile("source/_data/compiled/ranking/" + url + ".json", sortedRanks, function (err) {
+			fs.writeFileSync("source/_data/compiled/ranking/" + url + ".json", sortedRanks, function (err) {
 				if (err) throw err;
 				console.log('Saved! 3');
 			});
