@@ -2,25 +2,49 @@
 	{
 		"id": 1, "name":"Zach V", "color":"green", "avatar":"zach-v-avatar.jpg",
 		"games":[
-			{"id": "1", "win": 6, "loss": 2},
-			{"id": "2", "win": 95, "loss": 3},
-			{"id": "3", "win": 1, "loss": 5},
-			{"id": "4", "win": 1, "loss": 0}
+
 		]
 	},
 	{
 		"id": 2, "name":"Sydney V", "color":"gold", "avatar":"sydney-v-avatar.jpg",
 		"games":[
-			{"id":"1", "win": 15, "loss": 2},
-			{"id":"2", "win": 1,  "loss": 85},
-			{"id":"3", "win": 51, "loss": 5},
-			{"id":"4", "win": 21, "loss": 0}
+
 		]
 	},
 	{
-		"id": 3, "name":"Yuri V", "color":"pink", "avatar":"sydney-v-avatar.jpg",
+		"id": 3, "name":"Josh A", "color":"green", "avatar":"placeholder.jpg",
 		"games":[
-			{"id":"4", "win": 21, "loss": 0}
+
+		]
+	},
+	{
+		"id": 4, "name":"Robert C", "color":"green", "avatar":"placeholder.jpg",
+		"games":[
+
+		]
+	},
+	{
+		"id": 5, "name":"Eric R", "color":"green", "avatar":"placeholder.jpg",
+		"games":[
+
+		]
+	},
+	{
+		"id": 6, "name":"Desmond H", "color":"green", "avatar":"placeholder.jpg",
+		"games":[
+
+		]
+	},
+	{
+		"id": 7, "name":"Phil W", "color":"green", "avatar":"placeholder.jpg",
+		"games":[
+
+		]
+	},
+	{
+		"id": 8, "name":"Axel L", "color":"green", "avatar":"placeholder.jpg",
+		"games":[
+
 		]
 	}
 ]

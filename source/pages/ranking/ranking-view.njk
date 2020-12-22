@@ -5,6 +5,11 @@ permalink: /ranking/
 navActive: "ranking"
 ---
 
+{#
+	Updating the ranking table, use this JSON:
+	{"id": "1", "win": 6, "loss": 2}
+#}
+
 <div class="row justify-content-between align-items-center">
 	<h1 class="col-auto display-1 mb-5">Ranking</h1>
 	<div class="col-auto"><a href="/ranking/compare/" class="btn btn-primary btn-lg">Compare</a></div>
@@ -16,7 +21,8 @@ navActive: "ranking"
 
 <div class="row ranking-container">
 	{% for player in compiled.ranking %}
-		<div class="col-xxl-3 col-xl-4 col-lg-6 col-12">
+		{#{% if player.games|length > 0 %}#}
+		<div class="col-xxl-3 col-xl-4 col-lg-6 col-6 mb-5">
 			<button class="btn d-block w-100"
 					type="button"
 					data-bs-toggle="collapse"
@@ -28,12 +34,15 @@ navActive: "ranking"
 						 style="background-image: url('/images/avatars/{{ player.avatar }}')"></div>
 					<div class="ribbon">{{ player.name }}</div>
 				</div><!-- end rank badge -->
-				{% if player.record > -1 %}
-					<div class="badge bg-primary">Rank {{ loop.index }} | Score {{ player.record }}</div>
-				{% else %}
-					<div class="badge bg-danger">Rank {{ loop.index }} | Score {{ player.record }}</div>
-				{% endif %}
 
+				{% if player.record > -1 %}
+					{# Temporary if statement... delete this when ranking is filled out #}
+					<div class="badge bg-success">Score {{ player.record }}</div>
+					{% elseif player.record > -1 %}
+						<div class="badge bg-primary">Rank {{ loop.index }} | Score {{ player.record }}</div>
+					{% else %}
+						<div class="badge bg-danger">Rank {{ loop.index }} | Score {{ player.record }}</div>
+					{% endif %}
 			</button>
 
 			<div class="collapse show" id="ranking-{{ player.name|slugURL }}">
@@ -52,6 +61,7 @@ navActive: "ranking"
 				</div><!-- end containing div -->
 			</div><!-- end collapse -->
 		</div><!-- end col -->
+		{#{% endif %}#}
 	{% endfor %}
 </div><!-- end ranking wrapper -->
 
