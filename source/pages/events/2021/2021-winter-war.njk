@@ -1,36 +1,39 @@
 ---
 layout: layouts/base.njk
-title: "Winter War 2021"
-permalink: /events/2021-winter-war/
+title: "Winter War"
+permalink: /events/2020-winter-war/
 navActive: "events"
 ---
 
-<h1 class="display-1 mb-5">Winter War 2021</h1>
+<h1 class="display-1 mb-5">Winter War</h1>
 
 <div class="mb-5">
 	<img src="/images/posts/2020-2021-winter-war-f.jpg"
-		 alt="Winter War 2021 banner"
+		 alt="Winter War 2020 banner"
 		 class="img-fluid rounded shadow">
 </div>
 
 
 
 
-<div class="text-center pt-5">
+<div class="text-center pt-5 overflow-hidden">
 	<h2>The conclusion to The Winter War</h2>
-	<p id="countdown-clock" class="display-1 mb-5" style="opacity: 0;">3d 10h 31m 47s</p>
+	<div id="countdown-clock" class="display-1 pb-5" style="opacity: 0;">3d 10h 31m 47s</div>
 
-	<div class="row winter-war-glitch-text font-stack-header overflow-hidden">
-		<div class="col-lg-4">
+	<div class="row winter-war-glitch-text font-stack-header ">
+		<div class="col-lg-4 position-relative">
 			<div class="glitch" data-text="Josh">Josh</div>
+			<div class="winter-war-cross-out font-stack-header">X</div>
 		</div><!-- end col -->
 
-		<div class="col-lg-4">
+		<div class="col-lg-4 position-relative">
 			<div class="glitch" data-text="Chance">Chance</div>
+			<div class="winter-war-cross-out font-stack-header">X</div>
 		</div><!-- end col -->
 
-		<div class="col-lg-4">
+		<div class="col-lg-4 position-relative">
 			<div class="glitch" data-text="Zarian">Zarian</div>
+			<div class="winter-war-cross-out font-stack-header">X</div>
 		</div><!-- end col -->
 	</div><!-- end row -->
 </div><!-- end countdown timer -->
@@ -44,8 +47,6 @@ navActive: "events"
 
 
 <script>
-	// Glitch Text
-	document.querySelector("[data-text='Josh']")
 
 	// Set the date we're counting down to
 	let countDownDate = new Date("Dec 27, 2020 19:00:00").getTime();
@@ -77,7 +78,11 @@ navActive: "events"
 		// If the count down is finished, write some text
 		if (distance < 0) {
 			clearInterval(x);
-			countDownContainer.innerHTML = "EXPIRED";
+			countDownContainer.innerHTML = "<div class='glitch' data-text='Yeet' style='line-height: 1.2;'>Yeet</div>";
+
+			document.querySelector(".winter-war-glitch-text [data-text='Josh']").parentNode.querySelector(".winter-war-cross-out").style.opacity = "1";
+			document.querySelector(".winter-war-glitch-text [data-text='Chance']").parentNode.querySelector(".winter-war-cross-out").style.opacity = "1";
+			document.querySelector(".winter-war-glitch-text [data-text='Zarian']").parentNode.querySelector(".winter-war-cross-out").style.opacity = "1";
 		}
 	}, 1000);
 </script>

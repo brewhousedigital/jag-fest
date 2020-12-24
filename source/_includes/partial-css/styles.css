@@ -98,7 +98,7 @@ header button.btn svg {
 
 .winter-war-glitch-text .glitch {
 	font-size: 30px;
-	margin-bottom: 30px;
+	padding-bottom: 60px;
 }
 
 .glitch {
@@ -219,6 +219,17 @@ header button.btn svg {
 	}
 }
 
-@media screen and (min-width: 992px) {
 
+
+
+.winter-war-cross-out {
+	opacity: 0;
+	font-size: 100px;
+	color: #e74c3c;
+	user-select: none;
+	position: absolute;
+	top: 0;
+	left: calc(50% - 31px);
+	z-index: 50;
+	line-height: 20px;
 }
