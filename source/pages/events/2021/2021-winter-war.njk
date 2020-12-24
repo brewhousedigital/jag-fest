@@ -14,4 +14,70 @@ navActive: "events"
 </div>
 
 
-<h2>More information coming soon</h2>
+
+
+<div class="text-center pt-5">
+	<h2>The conclusion to The Winter War</h2>
+	<p id="countdown-clock" class="display-1 mb-5" style="opacity: 0;">3d 10h 31m 47s</p>
+
+	<div class="row winter-war-glitch-text font-stack-header overflow-hidden">
+		<div class="col-lg-4">
+			<div class="glitch" data-text="Josh">Josh</div>
+		</div><!-- end col -->
+
+		<div class="col-lg-4">
+			<div class="glitch" data-text="Chance">Chance</div>
+		</div><!-- end col -->
+
+		<div class="col-lg-4">
+			<div class="glitch" data-text="Zarian">Zarian</div>
+		</div><!-- end col -->
+	</div><!-- end row -->
+</div><!-- end countdown timer -->
+
+<div class="p-md-5">
+<div class="ratio ratio-16x9">
+	<iframe src="https://www.youtube.com/embed/4s21BGq2D4c?rel=0" title="YouTube video" class="rounded-lg shadow" allowfullscreen></iframe>
+</div>
+</div>
+
+
+
+<script>
+	// Glitch Text
+	document.querySelector("[data-text='Josh']")
+
+	// Set the date we're counting down to
+	let countDownDate = new Date("Dec 27, 2020 19:00:00").getTime();
+	let countDownContainer = document.getElementById("countdown-clock");
+
+	// Update the count down every 1 second
+	let x = setInterval(function() {
+
+		// Get today's date and time
+		let now = new Date().getTime();
+
+		// Find the distance between now and the count down date
+		let distance = countDownDate - now;
+
+		// Time calculations for days, hours, minutes and seconds
+		let days = Math.floor(distance / (1000 * 60 * 60 * 24));
+		let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+		let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+		let seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+		// Display the result in the element with id="demo"
+		countDownContainer.innerHTML = days + "d " + hours + "h "
+			+ minutes + "m " + seconds + "s ";
+
+		if(countDownContainer.style.opacity === "0") {
+			countDownContainer.style.opacity = "1";
+		}
+
+		// If the count down is finished, write some text
+		if (distance < 0) {
+			clearInterval(x);
+			countDownContainer.innerHTML = "EXPIRED";
+		}
+	}, 1000);
+</script>
