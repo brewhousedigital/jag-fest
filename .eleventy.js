@@ -102,6 +102,11 @@ module.exports = function(eleventyConfig) {
 	})
 
 
+	eleventyConfig.addShortcode("embedVideo", function(videoID) {
+		return "<div class='ratio ratio-16x9'><iframe src='https://www.youtube-nocookie.com/embed/" + videoID + "' allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe></div>";
+	});
+
+
 
 	eleventyConfig.addPassthroughCopy({"source/images": "/images"});
 	eleventyConfig.addPassthroughCopy({"source/manifest.json": "/manifest.json"});

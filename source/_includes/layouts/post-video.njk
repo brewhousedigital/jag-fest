@@ -1,0 +1,37 @@
+---
+layout: layouts/base.njk
+permalink: /videos/{{ title|slugURL }}-{{ date|slugURL }}/
+navActive: "videos"
+---
+
+<div class="post-vide-layout-container px-5 mx-auto">
+	<div class="row align-items-center justify-content-between">
+		<div class="col-lg-auto">
+			{% include 'source/pages/videos/component-show-logo.njk' %}
+		</div><!-- end col -->
+
+		<div class="col-lg-auto">
+			<p class="display-1">Episode {{ episode }}</p>
+		</div><!-- end col -->
+	</div><!-- end row -->
+
+	<h1 class="display-1 mb-5">{{ title }}</h1>
+
+	<div class="mb-5">
+		{% embedVideo videoID %}
+	</div>
+
+	<div class="pb-5 border-bottom mb-5 ">
+		{{ content | safe }}
+	</div><!-- end spacing -->
+
+	{#<ul>
+		{%- set nextPost = collections.posts | getNextCollectionItem(page) %}
+		{%- if nextPost %}<li>Next: <a href="{{ nextPost.url | url }}">{{ nextPost.data.title }}</a></li>{% endif %}
+
+		{%- set previousPost = collections.posts | getPreviousCollectionItem(page) %}
+		{%- if previousPost %}<li>Previous: <a href="{{ previousPost.url | url }}">{{ previousPost.data.title }}</a></li>{% endif %}
+	</ul>#}
+</div>
+
+

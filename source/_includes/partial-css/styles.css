@@ -59,9 +59,12 @@ main {
 	min-height: 100vh;
 }
 
-.post-layout-container{
+.post-layout-container {
 	max-width: 800px;
+}
 
+.post-vide-layout-container {
+	max-width: 1200px;
 }
 
 
