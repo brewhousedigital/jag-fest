@@ -8,4 +8,21 @@ navActive: "posts"
 <h1 class="display-1 mb-5">Posts</h1>
 
 {% set postslist = collections.posts %}
-	{% include "postslist.njk" %}
+{% set postslistCounter = collections.posts | length %}
+
+<div class="row">
+	{% for post in postslist | reverse %}
+		{% if post.data.category === "post" %}
+			<div class="col-lg-4">
+				<div class="card card-body text-white bg-dark mb-5 shadow">
+					<h3 class="mb-4" style="font-size: 30px">{{ post.data.title }}</h3>
+					<p class="mb-4">{{ post.data.description }}</p>
+					<div class="row">
+						<p class="col-md"><time class="postlist-date" datetime="{{ post.date | htmlDateString }}">{{ post.date | readableDate }}</time></p>
+						<p class="col-md text-end"><a href="{{ post.url }}" class="text-white stretched-link">Check it Out</a></p>
+					</div><!-- end row -->
+				</div><!-- end card -->
+			</div><!-- end col -->
+		{% endif %}
+	{% endfor %}
+</div><!-- end row -->
