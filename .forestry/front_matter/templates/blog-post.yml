@@ -38,3 +38,5 @@ fields:
   type: tag_list
   default: []
   label: Tags
+pages:
+- source/posts/test-with-monty.md
