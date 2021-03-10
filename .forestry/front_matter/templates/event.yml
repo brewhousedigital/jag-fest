@@ -34,4 +34,4 @@ fields:
   hidden: true
   default: events
 pages:
-- source/pages/events/testing-blog-post-1.app
+- source/pages/events/blog-post-testing-abc.md
