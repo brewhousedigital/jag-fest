@@ -33,3 +33,5 @@ fields:
   label: navActive
   hidden: true
   default: events
+pages:
+- source/pages/events/testing-forestry-event.njk
