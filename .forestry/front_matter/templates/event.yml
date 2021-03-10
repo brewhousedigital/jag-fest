@@ -1,4 +1,35 @@
 ---
 label: Event
 hide_body: false
-fields: []
+fields:
+- name: layout
+  type: select
+  default: layouts/base.njk
+  config:
+    required: false
+    options:
+    - layouts/base.njk
+    source:
+      type: simple
+      section: 
+      file: 
+      path: 
+  label: Layout
+  hidden: true
+- name: title
+  type: text
+  config:
+    required: false
+  label: Title
+- name: permalink
+  type: text
+  config:
+    required: false
+  label: URL
+- name: navActive
+  type: text
+  config:
+    required: false
+  label: navActive
+  hidden: true
+  default: events
