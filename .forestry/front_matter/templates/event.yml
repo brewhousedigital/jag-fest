@@ -34,4 +34,4 @@ fields:
   hidden: true
   default: events
 pages:
-- source/pages/events/testing-forestry-event.njk
+- source/pages/events/testing-blog-post-1.app
