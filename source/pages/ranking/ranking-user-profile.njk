@@ -1,0 +1,21 @@
+---
+pagination:
+  data: compiled.ranking
+  size: 1
+  alias: profile
+layout: layouts/base.njk
+title: Profile Page
+permalink: /ranking/{{ profile.name | slugURL }}/
+navActive: "ranking"
+---
+
+
+<h2><a href="/ranking/" class="text-white text-decoration-none">{% icon "arrow-left-circle" %} Ranking</a></h2>
+<h1 class="col-auto display-1 mb-5">{{ profile.name }}</h1>
+
+
+<p class="display-1">Wins: {{ profile.wins }}</p>
+
+<p class="display-1">Losses: {{ profile.losses }}</p>
+
+<p class="display-1">Record: {{ profile.record }}</p>
