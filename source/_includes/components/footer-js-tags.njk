@@ -7,8 +7,14 @@
 	{{ gamesJSON | safe }}
 </script>
 
+
 <script>
 	{% set js %}
+	{% if slider %}{% include "source/_includes/partial-js/library-carousel.js" %}{% endif %}
+
+
+	{% if title == "Home" %}{% include "source/_includes/partial-js/homepage.js" %}{% endif %}
+
 	{% include "source/_includes/partial-js/scripts.js" %}
 	{% endset %}
 	{{ js | safe }}

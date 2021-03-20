@@ -1,9 +1,31 @@
-<nav class="">
-	{% for link in nav %}
-		<a href="{{ link.href }}"
-		   class="d-flex align-items-center py-3 {% if link.active == navActive %}active{% endif %}">
-			{% icon link.icon %}
-			<span class="d-inline-block ms-3">{{ link.name }}</span>
-		</a>
-	{% endfor %}
-</nav>
+<a href="/ranking/" class="col-auto d-lg-block d-none {% if navActive == "ranking" %}active{% endif %}">Ranking</a>
+<a href="/art/" class="col-auto d-lg-block d-none {% if navActive == "art" %}active{% endif %}">Art</a>
+{#<a href="/social/" class="col-auto d-lg-block d-none {% if navActive == "social" %}active{% endif %}">Social</a>#}
+<a href="/game-reviews/" class="col-auto d-lg-block d-none {% if navActive == "gamereviews" %}active{% endif %}">Reviews</a>
+
+
+<h1 class="col-auto position-relative">
+	<a href="/">
+		<img src="/images/just-j-logo.png"
+			 alt="JAG logo"
+			 class="img-fluid"
+			 width="100"
+			 height="102">
+	</a>
+</h1>
+
+<a href="/events/" class="col-auto d-lg-block d-none {% if navActive == "events" %}active{% endif %}">Events</a>
+<a href="/posts/" class="col-auto d-lg-block d-none {% if navActive == "posts" %}active{% endif %}">Posts</a>
+
+<a href="#"
+		class="col-auto d-lg-block d-none"
+		id="nav-more-button"
+		data-bs-toggle="dropdown"
+		aria-expanded="false"><span>More</span>{% icon "list" %}</a>
+<ul class="dropdown-menu" aria-labelledby="nav-more-button">
+	<li><a class="dropdown-item" href="/videos/">Videos</a></li>
+	<li><a class="dropdown-item" href="/social/">Social</a></li>
+	{#<li><a class="dropdown-item" href="/art/">Art</a></li>#}
+	<li><a class="dropdown-item" href="/merch/">Merch</a></li>
+	<li><a class="dropdown-item" href="/about/">About</a></li>
+</ul>

@@ -1,0 +1,16 @@
+[
+	{
+		"id": "T1", "name":"Celestial", "color":"green", "avatar":"zach-v-avatar.jpg",
+		"members": [1,2],
+		"games":[
+
+		]
+	},
+	{
+		"id": "T2", "name":"Gatto", "color":"gold", "avatar":"sydney-v-avatar.jpg",
+		"members": [3,4],
+		"games":[
+
+		]
+	}
+]

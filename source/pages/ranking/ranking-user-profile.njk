@@ -9,7 +9,7 @@ permalink: /ranking/{{ profile.name | slugURL }}/
 navActive: "ranking"
 ---
 
-
+<div class="container">
 <h2><a href="/ranking/" class="text-white text-decoration-none">{% icon "arrow-left-circle" %} Ranking</a></h2>
 <h1 class="col-auto display-1 mb-5">{{ profile.name }}</h1>
 
@@ -19,3 +19,4 @@ navActive: "ranking"
 <p class="display-1">Losses: {{ profile.losses }}</p>
 
 <p class="display-1">Record: {{ profile.record }}</p>
+</div><!-- end container -->

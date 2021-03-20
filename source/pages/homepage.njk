@@ -3,75 +3,117 @@ layout: layouts/base.njk
 title: "Home"
 permalink: /
 navActive: "home"
+slider: true
 ---
 
-{#<a href="/events/jag-fest/2021/" class="d-block mb-5">
-	<img src="/images/posts/jag-fest-2021-annoucement.jpg"
-		 alt="JAG Fest 2021 Announcement"
-		 class="img-fluid rounded shadow d-block mx-auto">
-</a>#}
 
-<a href="/events/2020-winter-war/" class="d-block mb-5">
-	<img src="/images/posts/2020-2021-winter-war-f.jpg"
-		 alt="Winter War"
-		 width="1521"
-		 height="378"
-		 class="img-fluid rounded shadow d-block mx-auto">
-</a>
-
-
-
-<div class="row">
-	{#<div class="col-md-3">
-		<a href="/events/saturday-night-smash/">
-		<img src="/images/posts/jag-fest-2021-saturday-night-smash.jpg"
-			 alt="Saturday Night Smash event"
-			 class="img-fluid rounded shadow d-block mx-auto">
-		</a>
-	</div><!-- end col -->#}
-
-	<div class="col-md-3">
-		<a href="/videos/royal-rumble-2021-2021-02-06/">
-			<img src="/images/posts/event-the-room-episode-1-poster.jpg"
-				 alt="The Room - Wrestling Edition event"
-				 width="362"
-				 height="492"
-				 class="img-fluid rounded shadow d-block mx-auto">
-		</a>
-	</div><!-- end col -->
-
-	<div class="col-md-3">
-		<a href="/events/friday-night-impulse/">
-		<img src="/images/posts/website-post-friday-night-impulse.jpg"
-			 alt="Friday night Impulse Event"
-			 width="362"
-			 height="492"
-			 class="img-fluid rounded shadow d-block mx-auto">
-		</a>
-	</div><!-- end col -->
-
-	<div class="col-md-6">
-		<a href="/game-reviews/">
-		<img src="/images/posts/website-post-game-reviews.jpg"
-			 alt="Game Reviews graphic"
-			 width="749"
-			 height="492"
-			 class="img-fluid rounded shadow d-block mx-auto">
-		</a>
-	</div><!-- end col -->
+<div id="homepage-slider" class="splide mb-5">
+	<div class="splide__track">
+		<ul class="splide__list">
+			{% for banner in homepageCarousel %}
+				<li class="splide__slide">
+					<a href="{{ banner.url }}" class="d-block mb-5">
+						<img src="/images/homepage-banners/{{ banner.image }}"
+							 alt="{{ banner.name }}"
+							 width="1861"
+							 height="744"
+							 class="img-fluid rounded shadow d-block">
+					</a>
+				</li>
+			{% endfor %}
+		</ul>
+	</div>
+</div>
 
 
-</div><!-- end row -->
+<div class="mb-5">&nbsp;</div>
 
-{#<h1>Latest 3 Posts</h1>
+<div class="container">
+	<div class="jag-fest-promo row align-items-center mb-5">
+		<div class="col-xl pe-xl-5">
+			<div class="d-flex">
+				<div class="jag-fest-promo-hashtag">#justjnetwork</div>
+				<h2>JAGFEST 2021 <span class="d-lg-block d-none"></span>The Best One Yet!</h2>
+			</div><!-- end d-flex -->
 
-{% set postslist = collections.posts | head(-3) %}
-	{% set postslistCounter = collections.posts | length %}
-	{% include "postslist.njk" %}
+			<p>40+ participants, 6 games, two nights, one winner. This will be the largest JAG Fest in the history of Just J Network. Hone your skills, and defeat your opponents in a grueling battle to the death, to win the JAG Fest Champion's Belt.</p>
+		</div><!-- end col -->
+
+		<div class="col-xl-auto">
+			<img src="/images/posts/jagfest-2021-banner.jpg" alt="JAG Fest 2021" class="img-fluid rounded d-block mx-auto">
+		</div><!-- end col -->
+	</div><!-- end jag fest promo -->
 
 
-	{% for item in metadata.lol %}
-		<p>lol</p>
-	{% endfor %}
 
-<p>More posts can be found in <a href="{{ '/posts/' | url }}">the archive</a>.</p>#}
+
+	<div class="mb-5">&nbsp;</div>
+	<div class="mb-5">&nbsp;</div>
+	<div class="mb-5">&nbsp;</div>
+
+
+
+
+
+	<div class="text-end mb-5">
+		<h2 class="display-1 mb-5">Upcoming Matches</h2>
+
+		<div class="row align-items-center">
+			<div class="col-lg-5">
+				<div class="row align-items-center justify-content-center">
+					<div class="col-auto">
+						<img src="/images/avatars/{{ ranking[0].avatar }}"
+							 alt="{{ ranking[0].name }}"
+							 class="img-fluid rounded-circle"
+							 style="max-width: 100px;">
+					</div><!-- end col -->
+
+					<div class="col-auto">
+						<h3 class="display-4">{{ ranking[0].name }}</h3>
+					</div><!-- end col -->
+				</div><!-- end row -->
+			</div><!-- end col -->
+
+			<div class="col-lg-2">
+				<img src="/images/avatars/games/{{ games[1].avatar }}" alt="{{ games[1].name }}" class="img-fluid upcoming-match-game-avatar">
+			</div><!-- end col -->
+
+			<div class="col-lg-5">
+				<div class="row align-items-center justify-content-center">
+					<div class="col-auto">
+						<h3 class="display-4">{{ ranking[1].name }}</h3>
+					</div><!-- end col -->
+
+					<div class="col-auto">
+						<img src="/images/avatars/{{ ranking[1].avatar }}"
+							 alt="{{ ranking[1].name }}"
+							 class="img-fluid rounded-circle"
+							 style="max-width: 100px;">
+					</div><!-- end col -->
+				</div><!-- end row -->
+			</div><!-- end col -->
+		</div><!-- end row -->
+	</div><!-- end text end -->
+
+
+
+
+
+
+	<div class="mb-5">&nbsp;</div>
+	<div class="mb-5">&nbsp;</div>
+	<div class="mb-5">&nbsp;</div>
+
+
+
+
+	<h2 class="display-1">Latest Posts</h2>
+
+	<div id="homepage-post-block" class="mb-5">
+		{% set postslist = collections.posts | head(-3) %}
+		{% set postslistCounter = collections.posts | length %}
+		{% include "postslist.njk" %}
+	</div><!-- end post block -->
+
+	<div class="mb-5">&nbsp;</div>
+</div><!-- end container -->
