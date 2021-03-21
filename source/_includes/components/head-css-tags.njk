@@ -7,6 +7,8 @@
 
 	{% include "source/_includes/partial-css/styles.css" %}
 
+	{% if glitchText %}{% include "source/_includes/partial-css/glitch-text.css" %}{% endif %}
+
 	{% if navActive == "ranking" %}{% include "source/_includes/partial-css/ranking.css" %}{% endif %}
 
 	{% if title == "Home" %}{% include "source/_includes/partial-css/homepage.css" %}{% endif %}

@@ -16,11 +16,17 @@
 
 
 .jag-fest-promo h2 {
-	font-size: 80px;
+	font-size: 40px;
 }
 .jag-fest-promo-hashtag {
 	transform: rotate(180deg);
 	writing-mode: vertical-lr;
 	padding-left: 16px;
 	text-align: center;
+}
+
+@media screen and (min-width: 768px) {
+	.jag-fest-promo h2 {
+		font-size: 80px;
+	}
 }

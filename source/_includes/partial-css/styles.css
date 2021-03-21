@@ -65,17 +65,56 @@ header .dropdown-menu a.active {
 
 
 
+
+
+
+
+
+
+
+
+
 #nav-modal .modal-content,
 #nav-modal .modal-dialog {
 	max-width: 300px;
-	margin: 0;
+	margin: 0 0 0 auto;
 	background-color: #090d16;
 	height: 100vh;
 }
 
-#nav-modal.show  {
-	margin-top: 92px;
+#nav-modal.modal.fade .modal-dialog {
+	transform: translate(300px,0);
+	transition: transform .2s ease-out;
 }
+
+#nav-modal.modal.show .modal-dialog {
+	transform: none;
+}
+
+#nav-modal.show  {
+
+}
+
+
+#mobile-nav-list a {
+	color: #fff;
+	font-size: 20px;
+	text-decoration: none;
+	display: block;
+	padding: 12px 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 main {
 	min-height: 100vh;
@@ -88,6 +127,10 @@ main {
 .post-vide-layout-container {
 	max-width: 1200px;
 }
+
+
+
+
 
 
 header button.btn {
@@ -111,153 +154,7 @@ header button.btn svg {
 	border-radius: 30px;
 }
 
-#countdown-clock {
-	transition: all 1000ms;
-}
 
-:root {
-	--f-size: 15;
-	--f-unit: 1vmin;
-	--f: calc(var(--f-size) * var(--f-unit));
-}
-
-.winter-war-glitch-text .glitch {
-	font-size: 30px;
-	padding-bottom: 60px;
-}
-
-.glitch {
-	flex: 1;
-	line-height: 0.75;
-	margin: auto;
-	color: #1af0dc;
-	text-align: center;
-	transform: scaleX(var(--scale, 1));
-	animation: glitch-p 11s infinite alternate;
-}
-.glitch::before,
-.glitch::after {
-	--top: 0;
-	--left: 0;
-	--v-height: 30%;
-	--n-tenth: calc(var(--f-size) * .1 * var(--top));
-	--t-cut: calc(var(--n-tenth) / var(--f-size) * 100%);
-	--b-cut: calc(var(--t-cut) + var(--v-height));
-	content: attr(data-text);
-	position: absolute;
-	width: 100%;
-	left: 0;
-	text-align: center;
-	transform: translateX(calc(var(--left) * 100%));
-	filter: drop-shadow(0 0 transparent);
-	text-shadow: calc(var(--left) * -3em) 0 0.02em lime, calc(var(--left) * -6em) 0 0.02em #ff00e1;
-	background-color: var(--bg);
-	clip-path: polygon(0% var(--t-cut), 100% var(--t-cut), 100% var(--b-cut), 0% var(--b-cut));
-}
-.glitch::before {
-	animation: glitch-b 1.7s infinite alternate-reverse;
-}
-.glitch::after {
-	animation: glitch-a 3.1s infinite alternate;
-}
-
-@keyframes glitch-p {
-	17% {
-		--scale: .87;
-	}
-	31% {
-		--scale: 1.1;
-	}
-	37% {
-		--scale: 1.3;
-	}
-	47% {
-		--scale: .91;
-	}
-	87% {
-		--scale: 1;
-	}
-}
-@keyframes glitch-a {
-	10%, 30%, 50%, 70%, 90% {
-		--top: 0;
-		--left: 0;
-	}
-	0% {
-		--v-height: 15%;
-	}
-	20% {
-		--left: .005;
-	}
-	40% {
-		--left: .01;
-		--v-height: 20%;
-		--top: 3;
-	}
-	60% {
-		--left: .03;
-		--v-height: 25%;
-		--top: 6;
-	}
-	80% {
-		--left: .07;
-		--v-height: 5%;
-		--top: 8;
-	}
-	100% {
-		--left: .083;
-		--v-height: 30%;
-		--top: 1;
-	}
-}
-@keyframes glitch-b {
-	10%, 30%, 50%, 70%, 90% {
-		--top: 0;
-		--left: 0;
-	}
-	0% {
-		--v-height: 15%;
-		--top: 10;
-	}
-	20% {
-		--left: -.005;
-	}
-	40% {
-		--left: -.01;
-		--v-height: 17%;
-		--top: 3;
-	}
-	60% {
-		--left: -.03;
-		--v-height: 35%;
-		--top: 6;
-	}
-	80% {
-		--left: -.07;
-		--v-height: 5%;
-		--top: 8;
-	}
-	100% {
-		--left: -.083;
-		--v-height: 30%;
-		--top: 1;
-	}
-}
-
-
-
-
-.winter-war-cross-out {
-	opacity: 0;
-	font-size: 100px;
-	color: #e74c3c;
-	user-select: none;
-	position: absolute;
-	top: 0;
-	left: calc(50% - 31px);
-	z-index: 50;
-	line-height: 20px;
-}
 
 
 .upcoming-match-game-avatar {
