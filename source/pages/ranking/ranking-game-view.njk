@@ -13,12 +13,33 @@ currentGame: {{ game.id }}
 
 {% set currentGame = game.id %}
 
-<h2><a href="/ranking/" class="text-white text-decoration-none">{% icon "arrow-left-circle" %} Ranking</a></h2>
-<h1 class="col-auto display-1 mb-5">{{ game.name }}</h1>
+<div class="container">
+	<h2><a href="/ranking/" class="text-white text-decoration-none">{% icon "arrow-left-circle" %} Ranking</a></h2>
+
+	<div class="row align-items-center justify-content-between mb-5">
+		<div class="col-auto">
+			<h1 class="col-auto display-1">{{ game.name }}</h1>
+		</div><!-- end col -->
+
+		<div class="col-auto">
+			<div id="player-sort-buttons" class="btn-group" role="group" aria-label="Basic example">
+				<button id="sort-all" type="button" class="btn btn-primary active">All</button>
+				<button id="sort-individual" type="button" class="btn btn-primary">Individual</button>
+				<button id="sort-team" type="button" class="btn btn-primary">Team</button>
+			</div>
+		</div><!-- end col -->
+	</div><!-- end row -->
+
 
 <div class="row ranking-container text-center">
 	{% for player in compiled.ranking[game.url] %}
-		<div class="col-xxl-2 col-xl-4 col-6 mb-5">
+		{% if player.id[0] == "I" %}
+			{% set sortVar = "sort-individual" %}
+		{% elseif player.id[0] == "T" %}
+			{% set sortVar = "sort-team" %}
+		{% endif %}
+
+		<div class="col-xxl-2 col-xl-4 col-6 mb-5 sort-boxes {{ sortVar }}">
 			<div class="ranking-badge ranking-{{ player.color }}">
 				<div class="circle"
 					 style="background-image: url('/images/avatars/{{ player.avatar }}')"></div>
@@ -37,4 +58,55 @@ currentGame: {{ game.id }}
 		</div><!-- end col -->
 	{% endfor %}
 </div><!-- end ranking wrapper -->
+</div><!-- end container -->
 
+<script>
+	let playerSortButton = document.querySelectorAll("#player-sort-buttons > button");
+	let sortAll = document.getElementById("sort-all");
+	let sortIndividual = document.getElementById("sort-individual");
+	let sortTeam = document.getElementById("sort-team");
+
+	let allPlayers = document.querySelectorAll(".sort-boxes");
+	let individualPlayers = document.querySelectorAll(".sort-individual");
+	let teamPlayers = document.querySelectorAll(".sort-team");
+
+	function highlightSortButtons(whichButton) {
+		playerSortButton.forEach(function(btn) {
+			btn.classList.remove("active");
+		})
+
+		switch (whichButton) {
+			case "all": sortAll.classList.add("active"); break;
+			case "individual": sortIndividual.classList.add("active"); break;
+			case "team": sortTeam.classList.add("active"); break;
+		}
+	}
+
+	sortAll.addEventListener("click", function() {
+		allPlayers.forEach(function(item) {
+			item.style.display = "block";
+		});
+
+		highlightSortButtons("all");
+	});
+
+	sortIndividual.addEventListener("click", function() {
+		allPlayers.forEach(function(item) {item.style.display = "none";});
+
+		individualPlayers.forEach(function(item) {
+			item.style.display = "block";
+		});
+
+		highlightSortButtons("individual");
+	});
+
+	sortTeam.addEventListener("click", function() {
+		allPlayers.forEach(function(item) {item.style.display = "none";});
+
+		teamPlayers.forEach(function(item) {
+			item.style.display = "block";
+		});
+
+		highlightSortButtons("team");
+	});
+</script>

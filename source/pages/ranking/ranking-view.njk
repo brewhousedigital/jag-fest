@@ -7,11 +7,12 @@ navActive: "ranking"
 
 {#
 	Updating the ranking table, use this JSON:
-	{"id": "1", "win": 6, "loss": 2}
+	{"id": 1, "win": 6, "loss": 2}
 #}
 
+<div class="container">
 <div class="row justify-content-between align-items-center">
-	<h1 class="col-auto display-1 mb-5">Ranking</h1>
+	<h1 class="col-auto display-1 mb-5">Individual Ranking</h1>
 	<div class="col-auto"><a href="/ranking/compare/" class="btn btn-primary btn-lg">Compare</a></div>
 </div><!-- end row -->
 
@@ -19,7 +20,7 @@ navActive: "ranking"
 {# Colors #}
 {# yellow, orange, pink, red, purple, teal, blue, blue-dark, green, green-dark, silver, gold #}
 
-<div class="row ranking-container">
+<div class="row ranking-container mb-5">
 	{% for player in compiled.ranking %}
 		{#{% if player.games|length > 0 %}#}
 		<div class="col-xxl-3 col-xl-4 col-lg-6 col-6 mb-5">
@@ -65,3 +66,62 @@ navActive: "ranking"
 	{% endfor %}
 </div><!-- end ranking wrapper -->
 
+
+
+
+	<div class="mb-5">&nbsp;</div>
+
+
+
+	<div class="row justify-content-between align-items-center">
+		<h1 class="col-auto display-1 mb-5">Team Ranking</h1>
+		<div class="col-auto"><a href="/ranking/compare/" class="btn btn-primary btn-lg">Compare</a></div>
+	</div><!-- end row -->
+
+
+	<div class="row ranking-container mb-5">
+		{% for player in compiled.rankingTeam %}
+			{#{% if player.games|length > 0 %}#}
+			<div class="col-xxl-3 col-xl-4 col-lg-6 col-6 mb-5">
+				<button class="btn d-block w-100"
+						type="button"
+						data-bs-toggle="collapse"
+						data-bs-target="#ranking-{{ player.name|slugURL }}"
+						aria-expanded="true" aria-controls="ranking-{{ player.name|slugURL }}">
+
+					<div class="ranking-badge ranking-{{ player.color }}">
+						<div class="circle"
+							 style="background-image: url('/images/avatars/{{ player.avatar }}')"></div>
+						<div class="ribbon">{{ player.name }}</div>
+					</div><!-- end rank badge -->
+
+					{% if player.record > -1 %}
+						{# Temporary if statement... delete this when ranking is filled out #}
+						<div class="badge bg-success">Score {{ player.record }}</div>
+					{% elseif player.record > -1 %}
+						<div class="badge bg-primary">Rank {{ loop.index }} | Score {{ player.record }}</div>
+					{% else %}
+						<div class="badge bg-danger">Rank {{ loop.index }} | Score {{ player.record }}</div>
+					{% endif %}
+				</button>
+
+				<div class="collapse show" id="ranking-{{ player.name|slugURL }}">
+					<div class="">
+						<div class="list-group">
+							{% for game in player.games %}
+								<a href="/ranking/{{ games[game.id].url }}/" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+									<div>{{ games[game.id].name }}</div>
+									<div>
+										<span class="badge bg-success">+{{ game.win }}</span>
+										<span class="badge bg-danger">-{{ game.loss }}</span>
+									</div>
+								</a>
+							{% endfor %}
+						</div>
+					</div><!-- end containing div -->
+				</div><!-- end collapse -->
+			</div><!-- end col -->
+			{#{% endif %}#}
+		{% endfor %}
+	</div><!-- end ranking wrapper -->
+</div><!-- end container -->

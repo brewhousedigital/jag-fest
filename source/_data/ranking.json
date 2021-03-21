@@ -1,48 +1,48 @@
 [
 	{
-		"id": 1, "name":"Zach V", "color":"green", "avatar":"zach-v-avatar.jpg",
+		"id": "I1", "name":"Zach V", "color":"green", "avatar":"zach-v-avatar.jpg",
 		"games":[
 
 		]
 	},
 	{
-		"id": 2, "name":"Sydney V", "color":"gold", "avatar":"sydney-v-avatar.jpg",
+		"id": "I2", "name":"Sydney V", "color":"gold", "avatar":"sydney-v-avatar.jpg",
 		"games":[
 
 		]
 	},
 	{
-		"id": 3, "name":"Josh A", "color":"green", "avatar":"placeholder.jpg",
+		"id": "I3", "name":"Josh A", "color":"green", "avatar":"placeholder.jpg",
 		"games":[
 
 		]
 	},
 	{
-		"id": 4, "name":"Robert C", "color":"green", "avatar":"placeholder.jpg",
+		"id": "I4", "name":"Robert C", "color":"green", "avatar":"placeholder.jpg",
 		"games":[
 
 		]
 	},
 	{
-		"id": 5, "name":"Eric R", "color":"green", "avatar":"placeholder.jpg",
+		"id": "I5", "name":"Eric R", "color":"green", "avatar":"placeholder.jpg",
 		"games":[
 
 		]
 	},
 	{
-		"id": 6, "name":"Desmond H", "color":"green", "avatar":"placeholder.jpg",
+		"id": "I6", "name":"Desmond H", "color":"green", "avatar":"placeholder.jpg",
 		"games":[
 
 		]
 	},
 	{
-		"id": 7, "name":"Phil W", "color":"green", "avatar":"placeholder.jpg",
+		"id": "I7", "name":"Phil W", "color":"green", "avatar":"placeholder.jpg",
 		"games":[
 
 		]
 	},
 	{
-		"id": 8, "name":"Axel L", "color":"green", "avatar":"placeholder.jpg",
+		"id": "I8", "name":"Axel L", "color":"green", "avatar":"placeholder.jpg",
 		"games":[
 
 		]

@@ -13,47 +13,44 @@
 </head>
 <body>
 
-<div class="container-fluid">
-	<header class="row align-items-center py-3 ps-3">
+<div class="container">
+	<header class="row align-items-center justify-content-between py-3 mb-3">
+		<div class="col-auto px-0 d-lg-none d-block">
+			<button class="btn invisible">{% icon "list" %}</button>
+		</div>
+
+		{% include "source/_includes/components/head-nav.njk" %}
+
 		<div class="col-auto px-0 d-lg-none d-block">
 			<button class="btn" data-bs-toggle="modal" data-bs-target="#nav-modal">{% icon "list" %}</button>
 		</div>
-
-		<h1 class="col-auto position-relative">
-			<img src="/images/logo-rough.png"
-				 alt="JAG logo"
-				 class="img-fluid"
-				 width="50"
-				 height="52">
-			<a href="/" class="text-decoration-none stretched-link fw-bolder">JAG</a>
-		</h1>
 	</header><!-- end container -->
-
-
-	<main class="row">
-		<div class="sidebar col ps-0 d-lg-block d-none">
-			{% include "source/_includes/components/head-nav.njk" %}
-		</div><!-- end sidebar nav -->
-
-		<div class="col p-0">
-			<div class="p-3">
-				{{ content | safe }}
-			</div>
-		</div>
-	</main><!-- end row -->
-
-
-	<footer></footer>
 </div><!-- end container -->
 
 
+<main>
+	{{ content | safe }}
+</main><!-- end row -->
+
+
+<footer></footer>
+
 
 <div class="modal fade" id="nav-modal" tabindex="-1" aria-hidden="true">
-	<div class="modal-dialog">
-		<div class="modal-content border-0">
-			<div class="sidebar">
-				{% include "source/_includes/components/head-nav.njk" %}
-			</div>
+	<div class="modal-dialog modal-dialog-scrollable">
+		<div class="modal-content border-0 px-3 py-5 text-center">
+			<nav id="mobile-nav-list">
+				<h1 class="mb-4">Just J Network</h1>
+				<a class="{% if navActive == "ranking" %}active{% endif %}" href="/ranking/">Ranking</a>
+				<a class="{% if navActive == "art" %}active{% endif %}" href="/art/">Art</a>
+				<a class="{% if navActive == "gamereviews" %}active{% endif %}" href="/game-reviews/">Reviews</a>
+				<a class="{% if navActive == "events" %}active{% endif %}" href="/events/">Events</a>
+				<a class="{% if navActive == "posts" %}active{% endif %}" href="/posts/">Posts</a>
+				<a class="{% if navActive == "videos" %}active{% endif %}" href="/videos/">Videos</a>
+				<a class="{% if navActive == "social" %}active{% endif %}" href="/social/">Social</a>
+				<a class="{% if navActive == "merch" %}active{% endif %}" href="/merch/">Merch</a>
+				<a class="{% if navActive == "about" %}active{% endif %}" href="/about/">About</a>
+			</nav>
 		</div><!-- content -->
 	</div><!-- end dialog -->
 </div><!-- end modal -->

@@ -123,11 +123,19 @@ module.exports = function(eleventyConfig) {
 
 
 
-	function generateRankingInfo() {
-		let rankingFile = fs.readFileSync("source/_data/ranking.json");
+	function generateRankingInfo(type) {
+
+		let targetFile;
+		switch (type) {
+			case "individual": targetFile = "ranking.json"; break;
+			case "team": targetFile = "rankingTeam.json"; break;
+			default: return false;
+		}
+
+		let rankingFile = fs.readFileSync("source/_data/" + targetFile, "utf8");
 		let rankingJSON = JSON.parse(rankingFile);
 
-		let gamesFile = fs.readFileSync("source/_data/games.json");
+		let gamesFile = fs.readFileSync("source/_data/games.json", "utf8");
 		let gamesJSON = JSON.parse(gamesFile);
 
 		rankingJSON.forEach(function(rank) {
@@ -165,30 +173,34 @@ module.exports = function(eleventyConfig) {
 		//console.log(sortedRanks);
 		sortedRanks = JSON.stringify(sortedRanks);
 
-		fs.writeFileSync("source/_data/compiled/ranking.json", sortedRanks, function (err) {
+		fs.writeFileSync("source/_data/compiled/" + targetFile, sortedRanks, function (err) {
 			if (err) throw err;
 			console.log('Saved! 1');
 		});
-
-		/*fs.writeFile("_site/js/ranking.json", sortedRanks, function (err) {
-			if (err) throw err;
-			console.log('Saved! 2');
-		});*/
 	}
 
 
 	function generateGamesInfo() {
-		let gamesFile = fs.readFileSync("source/_data/games.json");
+
+		let gamesFile = fs.readFileSync("source/_data/games.json", "utf8");
 		let gamesJSON = JSON.parse(gamesFile);
 
-		for(const game in gamesJSON) {
+		let rankingFile = fs.readFileSync("source/_data/ranking.json", "utf8");
+		let rankingJSON = JSON.parse(rankingFile);
+
+		let rankingTeamFile = fs.readFileSync("source/_data/rankingTeam.json", "utf8");
+		let rankingTeamJSON = JSON.parse(rankingTeamFile);
+
+		rankingTeamJSON.forEach(function(rankObject) {
+			rankingJSON.push(rankObject);
+		})
+
+
+		for(let game in gamesJSON) {
 			let id = gamesJSON[game].id;
 			let name = gamesJSON[game].name;
 			let url = gamesJSON[game].url;
 			let desc = gamesJSON[game].description;
-
-			let rankingFile = fs.readFileSync("source/_data/ranking.json");
-			let rankingJSON = JSON.parse(rankingFile);
 
 			rankingJSON.forEach(function(rank) {
 				let totalWins = 0;
@@ -196,8 +208,8 @@ module.exports = function(eleventyConfig) {
 
 				rank["games"].forEach(function(item) {
 					if(item.id === id) {
-						totalWins += item.win;
-						totalLosses += item.loss;
+						totalWins += item['win'];
+						totalLosses += item['loss'];
 					}
 				});
 
@@ -229,18 +241,14 @@ module.exports = function(eleventyConfig) {
 				if (err) throw err;
 				console.log('Saved! 3');
 			});
-
-			/*fs.writeFile("_site/js/ranking/" + url + ".json", sortedRanks, function (err) {
-				if (err) throw err;
-				console.log('Saved! 4');
-			});*/
 		}
 
 		console.info("Done with the file generation");
 	}
 
 
-	generateRankingInfo();
+	generateRankingInfo("individual");
+	generateRankingInfo("team");
 	generateGamesInfo();
 
 

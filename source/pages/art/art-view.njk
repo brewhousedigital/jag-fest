@@ -5,6 +5,44 @@ permalink: /art/
 navActive: "art"
 ---
 
-<h1 class="display-1 mb-5">Art</h1>
-<h2>Art page coming soon</h2>
+<style>
+	.grid-item {
+		width: 100%;
+		padding: 30px;
+	}
 
+	@media screen and (min-width: 768px) {
+		.grid-item {width: 50%;}
+	}
+
+	@media screen and (min-width: 992px) {
+		.grid-item {width: 33%;}
+	}
+</style>
+
+
+<div class="container">
+	<h1 class="display-1 mb-5">Art</h1>
+
+	<div class="grid">
+		{% for item in art %}
+			<div class="grid-item {{ item.size }}">
+				<img src="/images/art/{{ item.name }}" alt="{{ item.alt }}" class="img-fluid rounded shadow">
+			</div>
+		{% endfor %}
+	</div>
+</div><!-- end container -->
+
+
+<script>
+	{% set js %}
+	{% include "source/_includes/partial-js/library-gallery.js" %}
+	{% endset %}
+	{{ js | safe }}
+
+	let elem = document.querySelector('.grid');
+	let iso = new Isotope( elem, {
+		// options
+		itemSelector: '.grid-item'
+	});
+</script>

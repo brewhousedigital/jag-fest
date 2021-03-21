@@ -1,10 +1,17 @@
 <link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Rajdhani:wght@600;700&display=swap" rel="stylesheet">
 <link href="/css/bootstrap.css" rel="stylesheet">
 <style>
 	{% set css %}
+	{% if slider %}{% include "source/_includes/partial-css/library-carousel.css" %}{% endif %}
+
 	{% include "source/_includes/partial-css/styles.css" %}
+
+	{% if glitchText %}{% include "source/_includes/partial-css/glitch-text.css" %}{% endif %}
+
 	{% if navActive == "ranking" %}{% include "source/_includes/partial-css/ranking.css" %}{% endif %}
+
+	{% if title == "Home" %}{% include "source/_includes/partial-css/homepage.css" %}{% endif %}
 	{% endset %}
 	{{ css | minifyCSS | safe }}
 </style>
