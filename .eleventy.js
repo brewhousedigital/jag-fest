@@ -254,6 +254,7 @@ module.exports = function(eleventyConfig) {
 
 	// APIs
 	eleventyConfig.addPassthroughCopy({"source/_data/compiled/ranking.json": "/js/ranking.json"});
+	eleventyConfig.addPassthroughCopy({"source/_data/compiled/rankingTeam.json": "/js/rankingTeam.json"});
 	eleventyConfig.addPassthroughCopy({"source/_data/compiled/ranking": "/js/ranking"});
 
 

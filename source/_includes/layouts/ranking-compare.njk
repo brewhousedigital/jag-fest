@@ -1,0 +1,66 @@
+---
+layout: layouts/base.njk
+navActive: "ranking"
+---
+
+{% macro createOptionsList(target) %}
+	{% for person in compiled[target] %}
+		<option value="{{ person.id }}">{{ person.name }}</option>
+	{% endfor %}
+{% endmacro %}
+
+
+<div class="container">
+	<h1 class="display-1 mb-5">{{ title }}</h1>
+
+
+	<form id="compare-rankings" class="row">
+		<div class="col-6 mb-5">
+			<label for="ranking-choice-1">Choose a person</label>
+			<select id="ranking-choice-1" name="ranking-choice-1" class="form-control">
+				<option selected disabled>Choose</option>
+				{{ createOptionsList(targetJSON) }}
+			</select>
+		</div><!-- end col -->
+
+		<div class="col-6 mb-5">
+			<label for="ranking-choice-2">Choose a person</label>
+			<select id="ranking-choice-2" name="ranking-choice-2" class="form-control">
+				<option selected disabled>Choose</option>
+				{{ createOptionsList(targetJSON) }}
+			</select>
+		</div><!-- end col -->
+	</form><!-- end row -->
+
+
+	<div class="row ranking-container">
+		<div id="ranking-compare-1" class="col-lg-6 col-6 text-center">
+			<div class="ranking-badge ranking-{{ person.color }}">
+				<div class="circle"
+					 style="background-image: url('/images/avatars/{{ person.avatar }}')"></div>
+				<div class="ribbon">{{ person.name }}</div>
+			</div><!-- end rank badge -->
+
+			<ul class="list-group"></ul>
+		</div><!-- end col -->
+
+		<div id="ranking-compare-2" class="col-lg-6 col-6 text-center">
+			<div class="ranking-badge ranking-{{ person.color }}">
+				<div class="circle"
+					 style="background-image: url('/images/avatars/{{ person.avatar }}')"></div>
+				<div class="ribbon">{{ person.name }}</div>
+			</div><!-- end rank badge -->
+
+			<ul class="list-group"></ul>
+		</div><!-- end col -->
+	</div><!-- end ranking wrapper -->
+</div><!-- end container -->
+
+<script>
+	let targetJSON = "/js/{{ rankingJSONFile }}.json";
+
+	{% set js %}
+	{% include "source/_includes/partial-js/ranking-compare.js" %}
+	{% endset %}
+	{{ js | safe }}
+</script>
